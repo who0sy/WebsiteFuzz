@@ -103,6 +103,7 @@ flag/
 home.php
 home/
 houtai/
+index
 index.html
 index.php
 index.php.7z

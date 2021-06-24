@@ -6,20 +6,21 @@ import (
 	"fuzz/utils"
 	"log"
 	"net/url"
+	"runtime"
 )
 
 var (
 	urlAddress  string
 	dictPath    string
-	concurrency uint
-	timeOut     uint
+	concurrency int
+	timeOut     int
 )
 
 func init() {
-	flag.StringVar(&urlAddress, "u", "https://www.whoosy.cn", "目标站点地址")
+	flag.StringVar(&urlAddress, "u", "", "目标站点地址")
 	flag.StringVar(&dictPath, "d", "./dict/dict.txt", "爆破字典路径")
-	flag.UintVar(&concurrency, "c", 5, "并发数")
-	flag.UintVar(&timeOut, "t", 3, "单个请求规则超时时间")
+	flag.IntVar(&concurrency, "c", runtime.GOMAXPROCS(runtime.NumCPU()), "并发数")
+	flag.IntVar(&timeOut, "t", 3, "单个请求规则超时时间")
 }
 
 func main() {
@@ -45,6 +46,8 @@ func main() {
 
 	log.Println("开始扫描.......")
 	log.Println("----------------------------------------------")
+
+	// 开始扫描
 	scan.Scan(urlAddress, concurrency, timeOut, rules)
 
 }
