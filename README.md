@@ -11,3 +11,6 @@ go build
 # 查看帮助
 ./fuzz -h
 ```
+
+![scan.png](./scan.png)
+
