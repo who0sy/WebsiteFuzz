@@ -10,6 +10,17 @@ go build
 
 # 查看帮助
 ./fuzz -h
+
+Usage of ./fuzz:
+  -c int
+        并发数 (default 8)
+  -d string
+        爆破字典路径 (default "./dict/dict.txt")
+  -t int
+        单个请求规则超时时间 (default 3)
+  -u string
+        目标站点地址
+
 ```
 
 ![scan.png](./scan.png)
